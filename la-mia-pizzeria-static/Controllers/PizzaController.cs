@@ -17,15 +17,15 @@ namespace la_mia_pizzeria_static.Controllers
         
         public IActionResult Index()
         {
-            //using (PizzaContext db = new PizzaContext())
-            //{
-            //    foreach(Pizza pizza in _pizzas)
-            //    {
-            //        db.Add(pizza);
-            //        db.SaveChanges();
-            //    }
+            using (PizzaContext db = new PizzaContext())
+            {
+                foreach(Pizza pizza in _pizzas)
+                {
+                    db.Add(pizza);
+                    db.SaveChanges();
+                }
               
-            //}
+            }
 
             if (_pizzas.Any())
             {
@@ -41,7 +41,7 @@ namespace la_mia_pizzeria_static.Controllers
 
         public IActionResult Details(int id)
         {
-            var pizza = _pizzas.FirstOrDefault(p => p.PizzaId == id);
+            var pizza = _pizzas.Where(p => p.PizzaId == id);
             if (pizza == null)
             {
                 return NotFound();
