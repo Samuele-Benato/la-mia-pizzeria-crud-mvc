@@ -1,6 +1,7 @@
 ﻿using la_mia_pizzeria_static.Data;
 using la_mia_pizzeria_static.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using System.Diagnostics;
 
 namespace la_mia_pizzeria_static.Controllers
@@ -26,6 +27,27 @@ namespace la_mia_pizzeria_static.Controllers
                 return View(pizza);
             else
                 return View("errore");
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Pizza data)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Create", data);
+            }
+
+            PizzaManager.InsertPizza(data);
+            using (PizzaContext db = new PizzaContext())
+           
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

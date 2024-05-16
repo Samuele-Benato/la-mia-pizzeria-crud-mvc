@@ -1,3 +1,4 @@
+using la_mia_pizzeria_static.Data;
 using Microsoft.AspNetCore.Hosting;
 
 namespace la_mia_pizzeria_static
@@ -6,7 +7,8 @@ namespace la_mia_pizzeria_static
     {
         public static void Main(string[] args)
         {
-            
+            PizzaManager.Seed();
+
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddRazorPages()

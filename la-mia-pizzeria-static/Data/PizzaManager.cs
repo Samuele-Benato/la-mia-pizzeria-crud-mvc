@@ -4,7 +4,7 @@ namespace la_mia_pizzeria_static.Data
 {
     public static class PizzaManager
     {
-        public static int CountAllPizzas()
+        public static int CountPizzas()
         {
             using PizzaContext db = new PizzaContext();
             return db.Pizzas.Count();
@@ -30,7 +30,7 @@ namespace la_mia_pizzeria_static.Data
 
         public static void Seed()
         {
-            if (CountAllPizzas() == 0)
+            if (CountPizzas() == 0)
             {
                 InsertPizza(new Pizza("BUFALA", "Passata di pomodoro San Marzano. Dop, bufala campana Dop, pepe nero, basilico fresco, olio extravergine d’oliva biologico.", "~/img/Marghe-pizza-bufala.webp", 8.50));
                 InsertPizza(new Pizza("NORMA", "Passata di pomodoro San Marzano Dop, provola affumicata d’Agerola, melanzane al forno, pomodorini semi dry, ricotta salata, basilico fresco, olio extra vergine d’oliva biologico.", "~/img/Marghe-Norma.webp", 10.50));
