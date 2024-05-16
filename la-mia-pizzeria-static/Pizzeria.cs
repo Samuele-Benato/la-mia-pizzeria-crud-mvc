@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using la_mia_pizzeria_static.Models;
 
 namespace la_mia_pizzeria_static
 {

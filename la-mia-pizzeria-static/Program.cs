@@ -6,7 +6,7 @@ namespace la_mia_pizzeria_static
     {
         public static void Main(string[] args)
         {
-
+            
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddRazorPages()
