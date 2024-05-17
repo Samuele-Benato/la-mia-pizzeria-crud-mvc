@@ -11,10 +11,12 @@ namespace la_mia_pizzeria_static.Models
         [Required(ErrorMessage = "Il campo è obbligatorio")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Il campo è obbligatorio")]
+        [MinWords(5)]
         public string Description { get; set; }
         public string? Image { get; set; } = "~/img/Marghe-pizza-bufala.webp";
+
         [Required(ErrorMessage = "Il campo è obbligatorio")]
-        [Range(4, 25, ErrorMessage = "il prezzo deve essere tra 4 e 25 euro")]
+        [Range(2, 50, ErrorMessage = "il prezzo deve essere tra 2 e 50 euro")]
         public double Price { get; set; }
         public Pizza() 
         {
