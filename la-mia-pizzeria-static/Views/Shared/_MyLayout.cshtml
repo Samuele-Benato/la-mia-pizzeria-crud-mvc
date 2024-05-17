@@ -47,8 +47,25 @@
         font-family: 'Ovo', sans-serif;
     }
 
-    .lightbeige{
-        color: #F8F6F2;
+    .nav-link.lightbeige {
+        color: #F8F6F2; 
+        position: relative; 
+        text-decoration: none;
     }
+
+        .nav-link.lightbeige::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0px;
+            width: 0;
+            height: 2px; 
+            background-color: #ff0000;
+            transition: width 0.5s ease; 
+        }
+
+        .nav-link.lightbeige:hover::after {
+            width: 100%;
+        }
 </style>
 </html>
