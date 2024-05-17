@@ -49,6 +49,57 @@ namespace la_mia_pizzeria_static.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            // Prendo il post AGGIORNATO da database, non
+            // uno passato da utente alla action
+            var pizzaToEdit = PizzaManager.GetPizza(id);
+
+            if (pizzaToEdit == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return View(pizzaToEdit);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int id, Pizza data)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Update", data);
+            }
+
+            // MODIFICA TRAMITE LAMBDA
+            bool result = PizzaManager.UpdatePizza(id, pizzaToEdit =>
+            {
+                pizzaToEdit.Name = data.Name;
+                pizzaToEdit.Description = data.Description;
+                pizzaToEdit.Price = data.Price;
+              //  pizzaToEdit.Image = data.Image;
+            });
+
+            if (result == true)
+                return RedirectToAction("Index");
+            else
+                return NotFound();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            if (PizzaManager.DeletePizza(id))
+                return RedirectToAction("Index");
+            else
+                return NotFound();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -12,9 +12,12 @@
 </head>
 <body>
     <div class="container">
-        <div class="d-flex justify-content-center"><img style="width:450px; height:450px;" src="~/img/Da Samu.svg" /></div>
+        <div class="d-flex justify-content-center align-items-center vh-100"><img style="width:80%; height:80%;" src="~/svg/Da Samu.svg" /></div>
 
         <div class="row">
+            <h1 class="mb-2">Menù </h1>
+            <p class="mb-4"> Il nostro impasto è preparato con ingredienti di alta qualità, selezionati con cura, e lievitato lentamente per oltre 48 ore. Questo processo garantisce una consistenza leggera e croccante, con una fragranza irresistibile, che esalta ogni boccone e rende ogni pizza un'esperienza unica e indimenticabile.</p>
+            <hr />
             @foreach (var pizza in Model)
             {
                 <div class="col-md-4">

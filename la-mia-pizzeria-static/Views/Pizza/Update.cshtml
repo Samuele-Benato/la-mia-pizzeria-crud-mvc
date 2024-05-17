@@ -1,6 +1,6 @@
 ﻿@model Pizza;
 @{
-    ViewData["Title"] = "Create Page";
+    ViewData["Title"] = "Update Page";
     Layout = "_MyLayout";
 }
 <html lang="en">
@@ -15,15 +15,15 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="d-flex justify-content-center">
-                    <img src="~/svg/Create.svg" style="width: 80%; aspect-ratio:auto;" />
+                    <img src="~/svg/Update.svg" style="width: 80%; aspect-ratio:auto;" />
                 </div>
             </div>
             <div class="col-md-6 d-flex flex-column justify-content-center">
-                <form asp-controller="Pizza" asp-action="Create" method="post">
+                <form asp-controller="Pizza" asp-action="Update" asp-route-id="@Model.PizzaId" method="post">
                     @Html.AntiForgeryToken()
                     <div class="mb-3">
-                        <h2>Create your Unique Pizza</h2>
-                        
+                        <h2>Update your Amazing Pizza</h2>
+
                     </div>
                     <div class="mb-3">
                         <strong>Nome:</strong>
@@ -35,7 +35,7 @@
                         <textarea asp-for="Description" class="custom-form-control d-block w-100" style="resize: none; height: 60px;" rows="3" maxlength="1000"></textarea>
                         <strong><span asp-validation-for="Description" class="text-muted"></span></strong>
                     </div>
-                     <div class="mb-3">
+                    <div class="mb-3">
                         <strong>Immagine:</strong>
                         <input asp-for="Image" class="custom-form-control d-block w-100" type="text" />
                     </div> 
@@ -45,14 +45,14 @@
                             <input asp-for="Price" type="number" class="custom-form-control w-100" />
                             <strong><span asp-validation-for="Price" class="text-muted"></span></strong>
                         </div>
-                       
+
                         <div class="d-inline-block w-40 text-end">
                             <button type="submit" class="border-0">
-                                <img src="~/svg/save.svg" style="width: 100px; aspect-ratio:auto;" />
+                                <img src="~/svg/opdatebutton.svg" style="width: 100px; aspect-ratio:auto;" />
                             </button>
                         </div>
                     </div>
-                    
+
                 </form>
             </div>
         </div>
@@ -65,7 +65,7 @@
         margin-top: 75px;
     }
 
-    .custom-form-control{
+    .custom-form-control {
         padding: .3rem;
         background-color: #F5F6F2;
         font-weight: 400;
@@ -73,10 +73,12 @@
         border: 1px solid black;
         border-radius: 5px;
     }
-    .w-58{
+
+    .w-58 {
         width: 58%;
     }
-    .w-40{
+
+    .w-40 {
         width: 40%;
     }
 </style>

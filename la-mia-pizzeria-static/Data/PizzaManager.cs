@@ -1,4 +1,5 @@
 ﻿using la_mia_pizzeria_static.Models;
+using Microsoft.Extensions.Hosting;
 
 namespace la_mia_pizzeria_static.Data
 {
@@ -27,6 +28,35 @@ namespace la_mia_pizzeria_static.Data
             pizza.Image ??= "/img/Marghe-pizza-bufala.webp";
             db.Pizzas.Add(pizza);
             db.SaveChanges();
+        }
+
+        public static bool UpdatePizza(int id, Action<Pizza> edit)
+        {
+            using PizzaContext db = new PizzaContext();
+            var pizza = db.Pizzas.FirstOrDefault(p => p.PizzaId == id);
+
+            if (pizza == null)
+                return false;
+
+            edit(pizza);
+
+            db.SaveChanges();
+
+            return true;
+        }
+
+        public static bool DeletePizza(int id)
+        {
+            using PizzaContext db = new PizzaContext();
+            var pizza = db.Pizzas.FirstOrDefault(p => p.PizzaId == id);
+
+            if (pizza == null)
+                return false;
+
+            db.Pizzas.Remove(pizza);
+            db.SaveChanges();
+
+            return true;
         }
 
         public static void Seed()
