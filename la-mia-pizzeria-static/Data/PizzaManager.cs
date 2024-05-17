@@ -24,6 +24,7 @@ namespace la_mia_pizzeria_static.Data
         public static void InsertPizza(Pizza pizza)
         {
             using PizzaContext db = new PizzaContext();
+            pizza.Image ??= "/img/Marghe-pizza-bufala.webp";
             db.Pizzas.Add(pizza);
             db.SaveChanges();
         }
