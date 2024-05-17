@@ -45,7 +45,6 @@ namespace la_mia_pizzeria_static.Controllers
             }
 
             PizzaManager.InsertPizza(data);
-            using (PizzaContext db = new PizzaContext())
            
             return RedirectToAction("Index");
         }
