@@ -19,7 +19,7 @@
             <a href="@Url.Action("Update", "Pizza", new { id = Model.PizzaId })"><img style="width: 100px; aspect-ratio:auto;" src="~/svg/update-d.svg" /></a>
             <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@Model.PizzaId" method="post">
                 @Html.AntiForgeryToken()
-                <button type="submit" class="border-0">
+                <button type="submit" class="border-0 delete-button">
                     <img src="~/svg/delete-d.svg" style="width: 100px; aspect-ratio:auto;" />
                 </button>
             </form>
@@ -54,6 +54,10 @@
             .pizza p {
                 margin-bottom: 10px;
             }
+
+        .delete-button{
+            background:none;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
